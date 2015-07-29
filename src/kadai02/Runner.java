@@ -5,7 +5,6 @@ import kadai02.calculator.Lcm;
 import kadai02.calculator.Rohrer;
 import kadai02.calculator.Round;
 
-// テスト
 public class Runner {
 
 	public static void main(String[] args) {
