@@ -13,7 +13,7 @@ public class Dcm {
 	 * @param num2 引数2
 	 * @return 引数1と引数2の最大公約数
 	 */
-	public int result() {
+	public int getDcm() {
 
 		ChangeNumUtil changeNum = new ChangeNumUtil();
 
@@ -45,8 +45,29 @@ public class Dcm {
 			small = remainder;
 		}
 
-		// 割る数（小さい方）を返す
+		// 最大公約数を返す
 		return small;
+	}
+
+
+	/**
+	 * 結果を表します。
+	 * @return 計算過程、計算結果
+	 */
+	public String result() {
+
+		// 結果を格納する変数を宣言
+		String resultDcm = "";
+		String detail = ("引数1 = " + num1 + ", 引数2 = " + num2);
+		String result = "";
+
+		// 結果をString型に変換
+		resultDcm = String.valueOf(getDcm());
+
+		// 過程、結果を変数に代入
+		result = (detail + "\n結果 = " + resultDcm);
+
+		return result;
 	}
 
 }

@@ -8,8 +8,6 @@ public class Rohrer {
 	public String weight;
 	public String height;
 
-	public double getValue;
-
 	/**
 	 * ローレル指数を計算します
 	 * @param weight 引数1
@@ -42,42 +40,46 @@ public class Rohrer {
 	 */
 	public String result() {
 
-		// 結果格納変数の初期化
+		// 結果格納変数の宣言
+		String detail = ("体重：" + weight + ", 身長：" + height + "\nローレル指数 = " + getRohrer());
 		String getJudge = "";
+		String result = "";
 
 		// ローレル指数が100未満だった場合
-		if (getValue < 100.0d) {
+		if (getRohrer() < 100.0d) {
 
 			// 判定結果「痩せすぎ」を格納
 			getJudge = "痩せすぎ";
 
 		// ローレル指数が100以上115未満だった場合
-		} else if (getValue >= 100.0d && getValue < 115.0d) {
+		} else if (getRohrer() >= 100.0d && getRohrer() < 115.0d) {
 
 			// 判定結果「やや痩せすぎ」を格納
 			getJudge = "やや痩せすぎ";
 
 		// ローレル指数が115以上150未満だった場合
-		} else if (getValue >= 115.0d && getValue < 150.0d) {
+		} else if (getRohrer() >= 115.0d && getRohrer() < 150.0d) {
 
 			// 判定結果「平均」を格納
 			getJudge = "平均";
 
 		// ローレル指数が150以上160未満だった場合
-		}else if (getValue >= 150.0d && getValue < 160.0d) {
+		}else if (getRohrer() >= 150.0d && getRohrer() < 160.0d) {
 
 			// 判定結果「やや太りぎみ」を格納
 			getJudge = "やや太りぎみ";
 
 		// ローレル指数が160以上だった場合
-		}else if (getValue >= 160.0d) {
+		}else if (getRohrer() >= 160.0d) {
 
 			// 判定結果「太り過ぎ」を格納
 			getJudge = "太り過ぎ";
 		}
 
+		result = (detail + "\n結果 = " + getJudge);
+
 		// 判定結果を返す
-		return getJudge;
+		return result;
 	}
 
 }
