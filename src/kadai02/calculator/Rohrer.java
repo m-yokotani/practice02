@@ -41,45 +41,58 @@ public class Rohrer {
 	public String result() {
 
 		// 結果格納変数の宣言
-		String detail = ("体重：" + weight + ", 身長：" + height + "\nローレル指数 = " + getRohrer());
-		String getJudge = "";
+		String resultJudge = "";
 		String result = "";
 
 		// ローレル指数が100未満だった場合
 		if (getRohrer() < 100.0d) {
 
 			// 判定結果「痩せすぎ」を格納
-			getJudge = "痩せすぎ";
+			resultJudge = "痩せすぎ";
 
 		// ローレル指数が100以上115未満だった場合
 		} else if (getRohrer() >= 100.0d && getRohrer() < 115.0d) {
 
 			// 判定結果「やや痩せすぎ」を格納
-			getJudge = "やや痩せすぎ";
+			resultJudge = "やや痩せすぎ";
 
 		// ローレル指数が115以上150未満だった場合
 		} else if (getRohrer() >= 115.0d && getRohrer() < 150.0d) {
 
 			// 判定結果「平均」を格納
-			getJudge = "平均";
+			resultJudge = "平均";
 
 		// ローレル指数が150以上160未満だった場合
 		}else if (getRohrer() >= 150.0d && getRohrer() < 160.0d) {
 
 			// 判定結果「やや太りぎみ」を格納
-			getJudge = "やや太りぎみ";
+			resultJudge = "やや太りぎみ";
 
 		// ローレル指数が160以上だった場合
 		}else if (getRohrer() >= 160.0d) {
 
 			// 判定結果「太り過ぎ」を格納
-			getJudge = "太り過ぎ";
+			resultJudge = "太り過ぎ";
 		}
 
-		result = (detail + "\n結果 = " + getJudge);
+		// 結果を変数に格納
+		result = ("結果 = " + resultJudge);
 
 		// 判定結果を返す
 		return result;
+	}
+
+	/**
+	 * 入力値など過程を表します。
+	 * @return 入力値など結果までの過程
+	 */
+	public String detail() {
+
+		// 結果までの過程を変数に格納
+		String detail = ("体重：" + weight + ", 身長：" + height + "\nローレル指数 = " + getRohrer());
+
+		// 入力値など過程を返す
+		return detail;
 	}
 
 }

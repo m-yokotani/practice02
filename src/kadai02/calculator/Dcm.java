@@ -51,23 +51,32 @@ public class Dcm {
 
 
 	/**
-	 * 結果を表します。
-	 * @return 計算過程、計算結果
+	 * 結果をString型に変換し、表します。
+	 * @return 結果をString型にしたもの
 	 */
 	public String result() {
 
 		// 結果を格納する変数を宣言
-		String resultDcm = "";
-		String detail = ("引数1 = " + num1 + ", 引数2 = " + num2);
 		String result = "";
 
 		// 結果をString型に変換
-		resultDcm = String.valueOf(getDcm());
+		result = ("結果 = " + String.valueOf(getDcm()));
 
-		// 過程、結果を変数に代入
-		result = (detail + "\n結果 = " + resultDcm);
-
+		// 計算結果を返す
 		return result;
+	}
+
+	/**
+	 * 入力値など過程を表します。
+	 * @return 入力値など結果までの過程
+	 */
+	public String detail() {
+
+		// 結果までの過程を変数に格納
+		String detail = ("引数1 = " + num1 + ", 引数2 = " + num2);
+
+		// 入力値など過程を返す
+		return detail;
 	}
 
 }

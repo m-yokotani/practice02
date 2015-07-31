@@ -37,22 +37,31 @@ public class Round {
 	}
 
 	/**
-	 * 結果を表します。
-	 * @return 計算過程、計算結果
+	 * 結果をString型に変換し、表します。
+	 * @return 結果をString型にしたもの
 	 */
 	public String result() {
 
 		// 結果を格納する変数を宣言
-		String resultRound = "";
-		String detail = ("num = " + num + ",keta = " + keta);
 		String result = "";
 
 		// 結果をString型に変換
-		resultRound = String.valueOf(getRound());
+		result = ("結果 = " + String.valueOf(getRound()));
 
-		// 過程、結果を変数に代入
-		result = (detail + "\n結果 = " + resultRound);
-
+		// 計算結果を返す
 		return result;
+	}
+
+	/**
+	 * 入力値など過程を表します。
+	 * @return 入力値など結果までの過程
+	 */
+	public String detail() {
+
+		// 結果までの過程を変数に格納
+		String detail = ("num = " + num + ",keta = " + keta);
+
+		// 入力値など過程を返す
+		return detail;
 	}
 }
