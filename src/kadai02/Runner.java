@@ -7,13 +7,19 @@ import kadai02.calculator.Round;
 
 public class Runner {
 
+	/**
+	 * 計算処理、結果の表示を行います
+	 * @param args 入力値
+	 */
 	public static void main(String[] args) {
 
+		// 結果を格納する変数の初期化
 		String detail = "";
 		String result = "";
 
 		switch (args[0]) {
 
+		// 計算方法に「Round」と入力された場合
 		case "Round" :
 
 			Round round = new Round();
@@ -26,6 +32,7 @@ public class Runner {
 
 			break;
 
+		// 計算方法に「Rohrer」と入力された場合
 		case "Rohrer" :
 
 			Rohrer rohrer = new Rohrer();
@@ -38,6 +45,7 @@ public class Runner {
 
 			break;
 
+		// 計算方法に「Dcm」と入力された場合
 		case "Dcm" :
 
 			Dcm dcm = new Dcm();
@@ -50,6 +58,7 @@ public class Runner {
 
 			break;
 
+		// 計算方法に「Lcm」と入力された場合
 		case "Lcm" :
 
 			Lcm lcm = new Lcm();
@@ -62,6 +71,7 @@ public class Runner {
 
 			break;
 
+		// 計算方法に「All」と入力された場合
 		case "All" :
 
 			Round roundAll = new Round();
@@ -88,11 +98,11 @@ public class Runner {
 
 		default :
 
-			detail = "*入力値エラー：入力しなおしてください";
-			result = "*入力値エラー：入力しなおしてください";
+			detail = "*入力値エラー：計算方法を入力しなおしてください";
+			result = "*入力値エラー：計算方法を入力しなおしてください";
 		}
 
-		System.out.println("*入力値 = " + args[0]);
+		System.out.println("*計算方法 = " + args[0]);
 		System.out.println("\n【過程】\n" + detail);
 		System.out.println("\n【結果】\n" + result);
 	}
