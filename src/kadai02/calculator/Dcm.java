@@ -60,7 +60,7 @@ public class Dcm {
 		String result = "";
 
 		// 結果をString型に変換
-		result = ("結果 = " + String.valueOf(getDcm()));
+		result = ("*Dcm：結果 = " + String.valueOf(getDcm()));
 
 		// 計算結果を返す
 		return result;
@@ -73,7 +73,7 @@ public class Dcm {
 	public String detail() {
 
 		// 結果までの過程を変数に格納
-		String detail = ("引数1 = " + num1 + ", 引数2 = " + num2);
+		String detail = ("*Dcm：引数1 = " + num1 + ", 引数2 = " + num2);
 
 		// 入力値など過程を返す
 		return detail;

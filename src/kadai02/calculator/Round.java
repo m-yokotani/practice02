@@ -46,7 +46,7 @@ public class Round {
 		String result = "";
 
 		// 結果をString型に変換
-		result = ("結果 = " + String.valueOf(getRound()));
+		result = ("*Round：結果 = " + String.valueOf(getRound()));
 
 		// 計算結果を返す
 		return result;
@@ -59,7 +59,7 @@ public class Round {
 	public String detail() {
 
 		// 結果までの過程を変数に格納
-		String detail = ("num = " + num + ",keta = " + keta);
+		String detail = ("*Round：num = " + num + ",keta = " + keta);
 
 		// 入力値など過程を返す
 		return detail;

@@ -76,7 +76,7 @@ public class Rohrer {
 		}
 
 		// 結果を変数に格納
-		result = ("結果 = " + resultJudge);
+		result = ("*Rohrer：結果 = " + resultJudge);
 
 		// 判定結果を返す
 		return result;
@@ -89,7 +89,7 @@ public class Rohrer {
 	public String detail() {
 
 		// 結果までの過程を変数に格納
-		String detail = ("体重：" + weight + ", 身長：" + height + "\nローレル指数 = " + getRohrer());
+		String detail = ("*Rohrer：体重：" + weight + ", 身長：" + height + "\n ローレル指数 = " + getRohrer());
 
 		// 入力値など過程を返す
 		return detail;

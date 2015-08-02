@@ -62,13 +62,38 @@ public class Runner {
 
 			break;
 
+		case "All" :
+
+			Round roundAll = new Round();
+			Rohrer rohrerAll = new Rohrer();
+			Dcm dcmAll = new Dcm();
+			Lcm lcmAll = new Lcm();
+
+			roundAll.num = args[1];
+			roundAll.keta = args[2];
+
+			rohrerAll.weight = args[3];
+			rohrerAll.height = args[4];
+
+			dcmAll.num1 = args[5];
+			dcmAll.num2 = args[6];
+
+			lcmAll.num1 = args[7];
+			lcmAll.num2 = args[8];
+
+			detail = (roundAll.detail() + "\n" + rohrerAll.detail() + "\n" + dcmAll.detail() + "\n" + lcmAll.detail());
+			result = (roundAll.result() + "\n" + rohrerAll.result() + "\n" + dcmAll.result() + "\n" + lcmAll.result());
+
+			break;
+
 		default :
 
-			result = "*入力値エラー：入力しなおしてください*";
+			detail = "*入力値エラー：入力しなおしてください";
+			result = "*入力値エラー：入力しなおしてください";
 		}
 
-		System.out.println(args[0]);
-		System.out.println(detail);
-		System.out.println(result);
+		System.out.println("*入力値 = " + args[0]);
+		System.out.println("\n【過程】\n" + detail);
+		System.out.println("\n【結果】\n" + result);
 	}
 }
