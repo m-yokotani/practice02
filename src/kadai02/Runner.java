@@ -13,6 +13,20 @@ public class Runner {
 	 */
 	public static void main(String[] args) {
 
+		/*
+		【次回課題のメモ】
+		1こめ ｺﾚ
+		String[] details = new String[10];
+		String[] results = new String[10];
+
+		2ｺﾒ インターフェイスがあるとできるやつ
+		Object[] calculators = new Object[10];
+
+
+		はっしゅ　つぎの課題
+		HashMap<String, String> all_results = new HashMap<String, String>();
+		*/
+
 		// 結果を格納する変数の初期化
 		String detail = "";
 		String result = "";
@@ -29,7 +43,6 @@ public class Runner {
 
 			detail = round.detail();
 			result = round.result();
-
 			break;
 
 		// 計算方法に「Rohrer」と入力された場合
@@ -98,8 +111,10 @@ public class Runner {
 
 		default :
 
-			detail = "*入力値エラー：計算方法を入力しなおしてください";
-			result = "*入力値エラー：計算方法を入力しなおしてください";
+			System.out.println("*計算方法 = " + args[0]);
+			System.out.println("*入力値エラー：\"" + args[0] + "\"は計算方法にありません。入力しなおしてください");
+
+			System.exit(1);
 		}
 
 		System.out.println("*計算方法 = " + args[0]);

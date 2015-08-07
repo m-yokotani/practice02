@@ -13,12 +13,12 @@ public class Dcm {
 	 * @param num2 引数2
 	 * @return 引数1と引数2の最大公約数
 	 */
-	public int getDcm() {
+	public int calculate() {
 
 		ChangeNumUtil changeNum = new ChangeNumUtil();
 
-		int tmp_num1 = changeNum.getIntNum(num1);
-		int tmp_num2 = changeNum.getIntNum(num2);
+		int tmp_num1 = changeNum.changeStringToInt(num1);
+		int tmp_num2 = changeNum.changeStringToInt(num2);
 
 		int big = 0;
 		int small = 0;
@@ -60,7 +60,7 @@ public class Dcm {
 		String result = "";
 
 		// 結果をString型に変換
-		result = ("*Dcm：結果 = " + String.valueOf(getDcm()));
+		result = ("*Dcm：結果 = " + String.valueOf(calculate()));
 
 		// 計算結果を返す
 		return result;

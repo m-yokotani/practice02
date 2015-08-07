@@ -13,7 +13,7 @@ public class Lcm {
 	 * @param num2 引数2
 	 * @return 引数1と引数2の最大勾配数を求めた結果
 	 */
-	public int getLcm() {
+	private int calculate() {
 
 		Dcm dcm = new Dcm();
 		ChangeNumUtil changeNum = new ChangeNumUtil();
@@ -21,11 +21,11 @@ public class Lcm {
 		dcm.num1 = num1;
 		dcm.num2 = num2;
 
-		int tmp_num1 = changeNum.getIntNum(num1);
-		int tmp_num2 = changeNum.getIntNum(num2);
+		int tmp_num1 = changeNum.changeStringToInt(num1);
+		int tmp_num2 = changeNum.changeStringToInt(num2);
 
 		// 2つの引数の最大公約数を変数に代入
-		int resultDcm = dcm.getDcm();
+		int resultDcm = dcm.calculate();
 
 		// 最大公倍数 = (引数1×引数2)÷引数1と引数2の最大公約数
 		int lcm = (tmp_num1 * tmp_num2) / resultDcm;
@@ -44,7 +44,7 @@ public class Lcm {
 		String result = "";
 
 		// 結果をString型に変換
-		result = ("*Lcm：結果 = " + String.valueOf(getLcm()));
+		result = ("*Lcm：結果 = " + String.valueOf(calculate()));
 
 		// 計算結果を返す
 		return result;

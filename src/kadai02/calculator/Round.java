@@ -14,16 +14,16 @@ public class Round {
 	 * @param keta 引数2
 	 * @return 引数1を引数2の桁数で四捨五入した結果
 	 */
-	public double getRound() {
+	private double calculate() {
 
 		MathUtil math = new MathUtil();
 		ChangeNumUtil changeNum = new ChangeNumUtil();
 
-		double tmp_num = changeNum.getDoubleNum(num);
-		int tmp_keta = changeNum.getIntNum(keta);
+		double tmp_num = changeNum.changeStringToDouble(num);
+		int tmp_keta = changeNum.changeStringToInt(keta);
 
 		// 四捨五入したい値が整数部の1桁目にくるように掛ける値を変数に代入
-		double pow = math.getPow(10.0d, tmp_keta - 1);
+		double pow = math.calculatePow(10.0d, tmp_keta - 1);
 
 		// 四捨五入処理を行い、変数roundに代入
 		double round = (int)(tmp_num * pow + 0.5d);
@@ -46,7 +46,7 @@ public class Round {
 		String result = "";
 
 		// 結果をString型に変換
-		result = ("*Round：結果 = " + String.valueOf(getRound()));
+		result = ("*Round：結果 = " + String.valueOf(calculate()));
 
 		// 計算結果を返す
 		return result;
