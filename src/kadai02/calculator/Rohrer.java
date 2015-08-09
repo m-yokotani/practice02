@@ -5,8 +5,16 @@ import kadai02.common.MathUtil;
 
 public class Rohrer {
 
-	public String weight;
-	public String height;
+	private double weight;
+	private double height;
+
+	public Rohrer(String strWeight, String strHeight) {
+
+		ChangeNumUtil changeNum = new ChangeNumUtil();
+
+		weight = changeNum.changeStringToDouble(strWeight);
+		height = changeNum.changeStringToDouble(strHeight);
+	}
 
 	/**
 	 * ローレル指数を計算します
@@ -17,17 +25,13 @@ public class Rohrer {
 	private double calculate() {
 
 		MathUtil math = new MathUtil();
-		ChangeNumUtil changeNum = new ChangeNumUtil();
-
-		double tmp_weight = changeNum.changeStringToDouble(weight);
-		double tmp_height = changeNum.changeStringToDouble(height);
 
 		// べき乗の計算
-		double pow01 = math.calculatePow(tmp_height, 3);
+		double pow01 = math.calculatePow(height, 3);
 		double pow02 = math.calculatePow(10.0d, 7);
 
 		// ローレル指数 = 体重×10^7/身長^3
-		double rohrer = (tmp_weight * pow02) / pow01;
+		double rohrer = (weight * pow02) / pow01;
 
 		// 計算結果を返す
 		return rohrer;
@@ -42,7 +46,8 @@ public class Rohrer {
 
 		// 結果格納変数の宣言
 		String resultJudge = "";
-		String result = "";
+
+		StringBuffer buf = new StringBuffer();
 
 		// ローレル指数が100未満だった場合
 		if (calculate() < 100.0d) {
@@ -75,8 +80,11 @@ public class Rohrer {
 			resultJudge = "太り過ぎ";
 		}
 
+		buf.append("*Rohrer：結果 = ");
+		buf.append(resultJudge);
+
 		// 結果を変数に格納
-		result = ("*Rohrer：結果 = " + resultJudge);
+		String result = buf.toString();
 
 		// 判定結果を返す
 		return result;
@@ -88,8 +96,17 @@ public class Rohrer {
 	 */
 	public String detail() {
 
+		StringBuffer buf = new StringBuffer();
+
+		buf.append("*Rohrer：体重：");
+		buf.append(weight);
+		buf.append(", 身長：");
+		buf.append(height);
+		buf.append("\n ローレル指数 = ");
+		buf.append(calculate());
+
 		// 結果までの過程を変数に格納
-		String detail = ("*Rohrer：体重：" + weight + ", 身長：" + height + "\n ローレル指数 = " + calculate());
+		String detail = buf.toString();
 
 		// 入力値など過程を返す
 		return detail;

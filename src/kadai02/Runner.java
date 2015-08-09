@@ -27,85 +27,69 @@ public class Runner {
 		HashMap<String, String> all_results = new HashMap<String, String>();
 		*/
 
-		// 結果を格納する変数の初期化
-		String detail = "";
-		String result = "";
+		// 結果を格納する配列、繰り返し回数を格納する変数の初期化
+		String[] details = new String[10];
+		String[] results = new String[10];
+		int x = 0;
+
+		// 入力値を引数として各計算のインスタンスを生成
+		Round round = new Round(args[1], args[2]);
+		Rohrer rohrer = new Rohrer(args[1], args[2]);
+		Dcm dcm = new Dcm(args[1], args[2]);
+		Lcm lcm = new Lcm(args[1], args[2]);
 
 		switch (args[0]) {
 
 		// 計算方法に「Round」と入力された場合
 		case "Round" :
 
-			Round round = new Round();
+			details[0] = round.detail();
+			results[0] = round.result();
+			x = 1;
 
-			round.num = args[1];
-			round.keta = args[2];
-
-			detail = round.detail();
-			result = round.result();
 			break;
 
 		// 計算方法に「Rohrer」と入力された場合
 		case "Rohrer" :
 
-			Rohrer rohrer = new Rohrer();
-
-			rohrer.weight =  args[1];
-			rohrer.height =  args[2];
-
-			detail = rohrer.detail();
-			result = rohrer.result();
+			details[0] = rohrer.detail();
+			results[0] = rohrer.result();
+			x = 1;
 
 			break;
 
 		// 計算方法に「Dcm」と入力された場合
 		case "Dcm" :
 
-			Dcm dcm = new Dcm();
-
-			dcm.num1 = args[1];
-			dcm.num2 = args[2];
-
-			detail = dcm.detail();
-			result = dcm.result();
+			details[0] = dcm.detail();
+			results[0] = dcm.result();
+			x = 1;
 
 			break;
 
 		// 計算方法に「Lcm」と入力された場合
 		case "Lcm" :
 
-			Lcm lcm = new Lcm();
-
-			lcm.num1 = args[1];
-			lcm.num2 = args[2];
-
-			detail = lcm.detail();
-			result = lcm.result();
+			details[0] = lcm.detail();
+			results[0] = lcm.result();
+			x = 1;
 
 			break;
 
 		// 計算方法に「All」と入力された場合
 		case "All" :
 
-			Round roundAll = new Round();
-			Rohrer rohrerAll = new Rohrer();
-			Dcm dcmAll = new Dcm();
-			Lcm lcmAll = new Lcm();
+			details[0] = round.detail();
+			details[1] = rohrer.detail();
+			details[2] = dcm.detail();
+			details[3] = lcm.detail();
 
-			roundAll.num = args[1];
-			roundAll.keta = args[2];
+			results[0] = round.result();
+			results[1] = rohrer.result();
+			results[2] = dcm.result();
+			results[3] = lcm.result();
 
-			rohrerAll.weight = args[3];
-			rohrerAll.height = args[4];
-
-			dcmAll.num1 = args[5];
-			dcmAll.num2 = args[6];
-
-			lcmAll.num1 = args[7];
-			lcmAll.num2 = args[8];
-
-			detail = (roundAll.detail() + "\n" + rohrerAll.detail() + "\n" + dcmAll.detail() + "\n" + lcmAll.detail());
-			result = (roundAll.result() + "\n" + rohrerAll.result() + "\n" + dcmAll.result() + "\n" + lcmAll.result());
+			x = 4;
 
 			break;
 
@@ -117,8 +101,12 @@ public class Runner {
 			System.exit(1);
 		}
 
-		System.out.println("*計算方法 = " + args[0]);
-		System.out.println("\n【過程】\n" + detail);
-		System.out.println("\n【結果】\n" + result);
+		System.out.println("★計算方法 = " + args[0] + "\n");
+
+		for (int i = 0; i < x; i++){
+
+			System.out.println(details[i]);
+			System.out.println(results[i] + "\n");
+		}
 	}
 }

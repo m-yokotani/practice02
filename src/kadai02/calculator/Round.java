@@ -5,8 +5,16 @@ import kadai02.common.MathUtil;
 
 public class Round {
 
-	public String num;
-	public String keta;
+	private double num;
+	private int keta;
+
+	public Round(String strNum, String strKeta) {
+
+		ChangeNumUtil changeNum = new ChangeNumUtil();
+
+		num = changeNum.changeStringToDouble(strNum);
+		keta = (int)changeNum.changeStringToDouble(strKeta);
+	}
 
 	/**
 	 * 四捨五入を行います。
@@ -17,16 +25,12 @@ public class Round {
 	private double calculate() {
 
 		MathUtil math = new MathUtil();
-		ChangeNumUtil changeNum = new ChangeNumUtil();
-
-		double tmp_num = changeNum.changeStringToDouble(num);
-		int tmp_keta = changeNum.changeStringToInt(keta);
 
 		// 四捨五入したい値が整数部の1桁目にくるように掛ける値を変数に代入
-		double pow = math.calculatePow(10.0d, tmp_keta - 1);
+		double pow = math.calculatePow(10.0d, keta - 1);
 
 		// 四捨五入処理を行い、変数roundに代入
-		double round = (int)(tmp_num * pow + 0.5d);
+		double round = (int)(num * pow + 0.5d);
 
 		// 整数部の桁を初期値に戻す
 		round /= pow;
@@ -42,11 +46,13 @@ public class Round {
 	 */
 	public String result() {
 
-		// 結果を格納する変数を宣言
-		String result = "";
+		StringBuffer buf = new StringBuffer();
+
+		buf.append("*Round：結果 = ");
+		buf.append(String.valueOf(calculate()));
 
 		// 結果をString型に変換
-		result = ("*Round：結果 = " + String.valueOf(calculate()));
+		String result = buf.toString();
 
 		// 計算結果を返す
 		return result;
@@ -58,8 +64,15 @@ public class Round {
 	 */
 	public String detail() {
 
+		StringBuffer buf = new StringBuffer();
+
+		buf.append("*Round：num = ");
+		buf.append(num);
+		buf.append(",keta = ");
+		buf.append(keta);
+
 		// 結果までの過程を変数に格納
-		String detail = ("*Round：num = " + num + ",keta = " + keta);
+		String detail = buf.toString();
 
 		// 入力値など過程を返す
 		return detail;

@@ -4,8 +4,16 @@ import kadai02.common.ChangeNumUtil;
 
 public class Dcm {
 
-	public String num1;
-	public String num2;
+	private int num1;
+	private int num2;
+
+	public Dcm(String strNum1, String strNum2) {
+
+		ChangeNumUtil changeNum = new ChangeNumUtil();
+
+		num1 = (int)changeNum.changeStringToDouble(strNum1);
+		num2 = (int)changeNum.changeStringToDouble(strNum2);
+	}
 
 	/**
 	 * 最大公約数を求めます
@@ -15,23 +23,18 @@ public class Dcm {
 	 */
 	public int calculate() {
 
-		ChangeNumUtil changeNum = new ChangeNumUtil();
-
-		int tmp_num1 = changeNum.changeStringToInt(num1);
-		int tmp_num2 = changeNum.changeStringToInt(num2);
-
 		int big = 0;
 		int small = 0;
 
 		// 引数の大きさを比べ、変数に代入
-		if(tmp_num1 >= tmp_num2) {
+		if(num1 >= num2) {
 
-			big = tmp_num1;
-			small = tmp_num2;
+			big = num1;
+			small = num2;
 		} else {
 
-			big = tmp_num2;
-			small = tmp_num1;
+			big = num2;
+			small = num1;
 		}
 
 		// 引数の大きい方を小さい方で割り、その余りが0になるまで繰り返し処理を行う
@@ -56,11 +59,13 @@ public class Dcm {
 	 */
 	public String result() {
 
-		// 結果を格納する変数を宣言
-		String result = "";
+		StringBuffer buf = new StringBuffer();
+
+		buf.append("*Dcm：結果 = ");
+		buf.append(String.valueOf(calculate()));
 
 		// 結果をString型に変換
-		result = ("*Dcm：結果 = " + String.valueOf(calculate()));
+		String result = buf.toString();
 
 		// 計算結果を返す
 		return result;
@@ -72,8 +77,15 @@ public class Dcm {
 	 */
 	public String detail() {
 
+		StringBuffer buf = new StringBuffer();
+
+		buf.append("*Dcm：引数1 = ");
+		buf.append(num1);
+		buf.append(", 引数2 = ");
+		buf.append(num2);
+
 		// 結果までの過程を変数に格納
-		String detail = ("*Dcm：引数1 = " + num1 + ", 引数2 = " + num2);
+		String detail = buf.toString();
 
 		// 入力値など過程を返す
 		return detail;
