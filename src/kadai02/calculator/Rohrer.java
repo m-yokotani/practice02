@@ -37,12 +37,17 @@ public class Rohrer {
 		return rohrer;
 	}
 
+	public double result() {
+
+		return calculate();
+	}
+
 	/**
 	 * ローレル指数から太り具合の判定をします
 	 * @param Rohrer 引数1
 	 * @return 引数1から太り具合を判定した結果
 	 */
-	public String result() {
+	public String judge() {
 
 		// 結果格納変数の宣言
 		String resultJudge = "";
@@ -80,7 +85,7 @@ public class Rohrer {
 			resultJudge = "太り過ぎ";
 		}
 
-		buf.append("*Rohrer：結果 = ");
+		buf.append("*Rohrer：判定結果 = ");
 		buf.append(resultJudge);
 
 		// 結果を変数に格納
@@ -102,8 +107,6 @@ public class Rohrer {
 		buf.append(weight);
 		buf.append(", 身長：");
 		buf.append(height);
-		buf.append("\n ローレル指数 = ");
-		buf.append(calculate());
 
 		// 結果までの過程を変数に格納
 		String detail = buf.toString();

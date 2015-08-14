@@ -1,5 +1,8 @@
 package kadai02;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import kadai02.calculator.Dcm;
 import kadai02.calculator.Lcm;
 import kadai02.calculator.Rohrer;
@@ -27,73 +30,7 @@ public class Runner {
 		HashMap<String, String> all_results = new HashMap<String, String>();
 		*/
 
-		// 結果を格納する配列、繰り返し回数を格納する変数の初期化
-		String[] details = new String[10];
-		String[] results = new String[10];
-		int x = 0;
-
-		// 入力値を引数として各計算のインスタンスを生成
-		Round round = new Round(args[1], args[2]);
-		Rohrer rohrer = new Rohrer(args[1], args[2]);
-		Dcm dcm = new Dcm(args[1], args[2]);
-		Lcm lcm = new Lcm(args[1], args[2]);
-
-		switch (args[0]) {
-
-		// 計算方法に「Round」と入力された場合
-		case "Round" :
-
-			details[0] = round.detail();
-			results[0] = round.result();
-			x = 1;
-
-			break;
-
-		// 計算方法に「Rohrer」と入力された場合
-		case "Rohrer" :
-
-			details[0] = rohrer.detail();
-			results[0] = rohrer.result();
-			x = 1;
-
-			break;
-
-		// 計算方法に「Dcm」と入力された場合
-		case "Dcm" :
-
-			details[0] = dcm.detail();
-			results[0] = dcm.result();
-			x = 1;
-
-			break;
-
-		// 計算方法に「Lcm」と入力された場合
-		case "Lcm" :
-
-			details[0] = lcm.detail();
-			results[0] = lcm.result();
-			x = 1;
-
-			break;
-
-		// 計算方法に「All」と入力された場合
-		case "All" :
-
-			details[0] = round.detail();
-			details[1] = rohrer.detail();
-			details[2] = dcm.detail();
-			details[3] = lcm.detail();
-
-			results[0] = round.result();
-			results[1] = rohrer.result();
-			results[2] = dcm.result();
-			results[3] = lcm.result();
-
-			x = 4;
-
-			break;
-
-		default :
+		if(!"All".equals(args[0]) && !"Round".equals(args[0]) && !"Rohrer".equals(args[0]) && !"Dcm".equals(args[0]) && !"Lcm".equals(args[0])) {
 
 			System.out.println("*計算方法 = " + args[0]);
 			System.out.println("*入力値エラー：\"" + args[0] + "\"は計算方法にありません。入力しなおしてください");
@@ -101,12 +38,82 @@ public class Runner {
 			System.exit(1);
 		}
 
+		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+
+		if("All".equals(args[0]) || "Round".equals(args[0])) {
+
+			// Roundインスタンスを生成
+			Round round = new Round(args[1], args[2]);
+
+			HashMap<String, String> roundMap = new HashMap<String, String>();
+
+			roundMap.put("name", "Round");
+			roundMap.put("detail", round.detail());
+			roundMap.put("result", String.valueOf(round.result()));
+
+			list.add(roundMap);
+
+		}
+
+		if("All".equals(args[0]) || "Rohrer".equals(args[0])) {
+			// Rohrerインスタンスを生成
+			Rohrer rohrer = new Rohrer(args[1], args[2]);
+
+			HashMap<String, String> rohrerMap = new HashMap<String, String>();
+
+			rohrerMap.put("name", "Rohrer");
+			rohrerMap.put("detail", rohrer.detail());
+			rohrerMap.put("result", String.valueOf(rohrer.result()));
+			rohrerMap.put("judge", rohrer.judge());
+
+			list.add(rohrerMap);
+		}
+
+		if(args[0] == "All" || args[0] == "Dcm") {
+
+			// Dcmインスタンスを生成
+			Dcm dcm = new Dcm(args[1], args[2]);
+
+			HashMap<String, String> dcmMap = new HashMap<String, String>();
+
+			dcmMap.put("name", "Dcm");
+			dcmMap.put("detail", dcm.detail());
+			dcmMap.put("result", String.valueOf(dcm.result()));
+
+			list.add(dcmMap);
+		}
+
+		if(args[0] == "All" || args[0] == "Lcm") {
+
+			// Lcmインスタンスを生成
+			Lcm lcm = new Lcm(args[1], args[2]);
+
+			HashMap<String, String> lcmMap = new HashMap<String, String>();
+
+			lcmMap.put("name", "Lcm");
+			lcmMap.put("detail", lcm.detail());
+			lcmMap.put("result", String.valueOf(lcm.result()));
+
+			list.add(lcmMap);
+		}
+
 		System.out.println("★計算方法 = " + args[0] + "\n");
 
-		for (int i = 0; i < x; i++){
+		for (int i = 0; i < list.size(); i++){
 
-			System.out.println(details[i]);
-			System.out.println(results[i] + "\n");
+			HashMap<String, String> map = list.get(i);
+
+			if (map.get("name") == "Rohrer") {
+
+				System.out.println(map.get("detail"));
+				System.out.println("*" + map.get("name") + "：結果 = " + map.get("result"));
+				System.out.println(map.get("judge") + "\n");
+
+			} else {
+
+				System.out.println(map.get("detail"));
+				System.out.println("*" + map.get("name") + "：結果 = " + map.get("result") + "\n");
+			}
 		}
 	}
 }

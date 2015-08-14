@@ -24,7 +24,7 @@ public class ChangeNumUtil {
 	public int changeStringToInt(String args) {
 
 		// 入力値をint型に変換し、変数に代入
-		int intChange = Integer.parseInt(args);
+		int intChange = (int)Double.parseDouble(args);
 
 		// int型に変換した値を返す
 		return intChange;

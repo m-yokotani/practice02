@@ -11,8 +11,8 @@ public class Dcm {
 
 		ChangeNumUtil changeNum = new ChangeNumUtil();
 
-		num1 = (int)changeNum.changeStringToDouble(strNum1);
-		num2 = (int)changeNum.changeStringToDouble(strNum2);
+		num1 = changeNum.changeStringToInt(strNum1);
+		num2 = changeNum.changeStringToInt(strNum2);
 	}
 
 	/**
@@ -57,18 +57,9 @@ public class Dcm {
 	 * 結果をString型に変換し、表します。
 	 * @return 結果をString型にしたもの
 	 */
-	public String result() {
-
-		StringBuffer buf = new StringBuffer();
-
-		buf.append("*Dcm：結果 = ");
-		buf.append(String.valueOf(calculate()));
-
-		// 結果をString型に変換
-		String result = buf.toString();
-
+	public double result() {
 		// 計算結果を返す
-		return result;
+		return (double)calculate();
 	}
 
 	/**

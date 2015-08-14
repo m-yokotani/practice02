@@ -13,7 +13,7 @@ public class Round {
 		ChangeNumUtil changeNum = new ChangeNumUtil();
 
 		num = changeNum.changeStringToDouble(strNum);
-		keta = (int)changeNum.changeStringToDouble(strKeta);
+		keta = changeNum.changeStringToInt(strKeta);
 	}
 
 	/**
@@ -44,18 +44,10 @@ public class Round {
 	 * 結果をString型に変換し、表します。
 	 * @return 結果をString型にしたもの
 	 */
-	public String result() {
-
-		StringBuffer buf = new StringBuffer();
-
-		buf.append("*Round：結果 = ");
-		buf.append(String.valueOf(calculate()));
-
-		// 結果をString型に変換
-		String result = buf.toString();
+	public double result() {
 
 		// 計算結果を返す
-		return result;
+		return calculate();
 	}
 
 	/**
