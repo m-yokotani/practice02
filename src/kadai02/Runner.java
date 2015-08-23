@@ -24,10 +24,6 @@ public class Runner {
 
 		2ｺﾒ インターフェイスがあるとできるやつ
 		Object[] calculators = new Object[10];
-
-
-		はっしゅ　つぎの課題
-		HashMap<String, String> all_results = new HashMap<String, String>();
 		*/
 
 		if(!"All".equals(args[0]) && !"Round".equals(args[0]) && !"Rohrer".equals(args[0]) && !"Dcm".equals(args[0]) && !"Lcm".equals(args[0])) {
@@ -40,62 +36,74 @@ public class Runner {
 
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
-		if("All".equals(args[0]) || "Round".equals(args[0])) {
+		try {
 
-			// Roundインスタンスを生成
-			Round round = new Round(args[1], args[2]);
+			if("All".equals(args[0]) || "Round".equals(args[0])) {
 
-			HashMap<String, String> roundMap = new HashMap<String, String>();
+				// Roundインスタンスを生成
+				Round round = new Round(args[1], args[2]);
 
-			roundMap.put("name", "Round");
-			roundMap.put("detail", round.detail());
-			roundMap.put("result", String.valueOf(round.result()));
+				HashMap<String, String> roundMap = new HashMap<String, String>();
 
-			list.add(roundMap);
+				roundMap.put("name", "Round");
+				roundMap.put("detail", round.detail());
+				roundMap.put("result", String.valueOf(round.result()));
 
+				list.add(roundMap);
+
+			}
+
+			if("All".equals(args[0]) || "Rohrer".equals(args[0])) {
+				// Rohrerインスタンスを生成
+				Rohrer rohrer = new Rohrer(args[1], args[2]);
+
+				HashMap<String, String> rohrerMap = new HashMap<String, String>();
+
+				rohrerMap.put("name", "Rohrer");
+				rohrerMap.put("detail", rohrer.detail());
+				rohrerMap.put("result", String.valueOf(rohrer.result()));
+				rohrerMap.put("judge", rohrer.judge());
+
+				list.add(rohrerMap);
+			}
+
+			if("All".equals(args[0]) || "Dcm".equals(args[0])) {
+
+				// Dcmインスタンスを生成
+				Dcm dcm = new Dcm(args[1], args[2]);
+
+				HashMap<String, String> dcmMap = new HashMap<String, String>();
+
+				dcmMap.put("name", "Dcm");
+				dcmMap.put("detail", dcm.detail());
+				dcmMap.put("result", String.valueOf(dcm.result()));
+
+				list.add(dcmMap);
+			}
+
+			if("All".equals(args[0]) || "Lcm".equals(args[0])) {
+
+				// Lcmインスタンスを生成
+				Lcm lcm = new Lcm(args[1], args[2]);
+
+				HashMap<String, String> lcmMap = new HashMap<String, String>();
+
+				lcmMap.put("name", "Lcm");
+				lcmMap.put("detail", lcm.detail());
+				lcmMap.put("result", String.valueOf(lcm.result()));
+
+				list.add(lcmMap);
+			}
+
+		} catch (NumberFormatException e){
+
+			System.err.println("入力値に数値ではない値が含まれています。数値を入力して下さい。\n");
+
+		} catch (ArrayIndexOutOfBoundsException e) {
+
+			System.err.println("入力値が足りません。入力値は2つ指定して下さい。\n");
 		}
 
-		if("All".equals(args[0]) || "Rohrer".equals(args[0])) {
-			// Rohrerインスタンスを生成
-			Rohrer rohrer = new Rohrer(args[1], args[2]);
-
-			HashMap<String, String> rohrerMap = new HashMap<String, String>();
-
-			rohrerMap.put("name", "Rohrer");
-			rohrerMap.put("detail", rohrer.detail());
-			rohrerMap.put("result", String.valueOf(rohrer.result()));
-			rohrerMap.put("judge", rohrer.judge());
-
-			list.add(rohrerMap);
-		}
-
-		if(args[0] == "All" || args[0] == "Dcm") {
-
-			// Dcmインスタンスを生成
-			Dcm dcm = new Dcm(args[1], args[2]);
-
-			HashMap<String, String> dcmMap = new HashMap<String, String>();
-
-			dcmMap.put("name", "Dcm");
-			dcmMap.put("detail", dcm.detail());
-			dcmMap.put("result", String.valueOf(dcm.result()));
-
-			list.add(dcmMap);
-		}
-
-		if(args[0] == "All" || args[0] == "Lcm") {
-
-			// Lcmインスタンスを生成
-			Lcm lcm = new Lcm(args[1], args[2]);
-
-			HashMap<String, String> lcmMap = new HashMap<String, String>();
-
-			lcmMap.put("name", "Lcm");
-			lcmMap.put("detail", lcm.detail());
-			lcmMap.put("result", String.valueOf(lcm.result()));
-
-			list.add(lcmMap);
-		}
 
 		System.out.println("★計算方法 = " + args[0] + "\n");
 
@@ -103,7 +111,7 @@ public class Runner {
 
 			HashMap<String, String> map = list.get(i);
 
-			if (map.get("name") == "Rohrer") {
+			if ("Rohrer".equals(map.get("name"))) {
 
 				System.out.println(map.get("detail"));
 				System.out.println("*" + map.get("name") + "：結果 = " + map.get("result"));
